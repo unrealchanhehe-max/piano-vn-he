@@ -1,0 +1,211 @@
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+ Title = "Auto Running";
+ Text = "Script cover by Ts_";
+ Icon = "rbxthumb://type=Asset&id=6430826940&w=150&h=150"})
+Duration = 29;
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
+ImageButton.Size = UDim2.new(0, 40, 0, 40)
+ImageButton.Draggable = true
+ImageButton.Image = "http://www.roblox.com/asset/?id=831902769514"
+
+UICorner.CornerRadius = UDim.new(1, 10) 
+UICorner.Parent = ImageButton
+
+ImageButton.MouseButton1Down:Connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+repeat wait() until game:IsLoaded()
+local Window = Fluent:CreateWindow({
+    Title = "Piano Auto🎹",
+    SubTitle = "Beta Version [1.2.6] mini update",
+    TabWidth = 157,
+    Size = UDim2.fromOffset(450, 300),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.End
+})
+local Tabs = {
+        Main0=Window:AddTab({ Title="Thông Tin" }),
+        Main1=Window:AddTab({ Title="Piano Auto 🎹[10🎶]" }),
+        Main2=Window:AddTab({ Title="Nhạc Review phim🎹🎥[2🎶]" }),
+}
+    Tabs.Main0:AddButton({
+    Title = "Roblox",
+    Description = "Follow",
+    Callback = function()
+        setclipboard("https://www.roblox.com/vi/users/4457771752/profile")
+    end
+})
+
+    Tabs.Main0:AddButton({
+    Title = "Youtuber",
+    Description = "Tamm",
+    Callback = function()
+        setclipboard("https://www.youtube.com/@TamScripter")
+    end
+})
+
+    Tabs.Main1:AddButton({
+    Title="Đừng làm trái tim anh đau",
+    Description="Auto",
+    Callback=function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+}
+
+
+bpm = 125
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/9901f2a773706ccee2d1bbe90ffb4861/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Tháng 4 là lời nói dối",
+    Description="Auto",
+    Callback=function()
+	  bpm = 65
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/4f22229484417182d2e664c52699b32d/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Chúng ta không thuộc về nhau",
+    Description="Auto",
+    Callback=function()
+bpm = 103
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/e6e0c4afae040ec4c020759988f8442e/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Thiên lý ơi",
+    Description="Auto",
+    Callback=function()
+bpm = 95
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/e456d85ef5a013c095e6c2e4b88b4683/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Nơi Này Có Anh",
+    Description="Auto",
+    Callback=function()
+bpm = 92
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/80f450ef29850dc83c9d33c9763eec07/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Gió Nổi Rồi",
+    Description="Auto",
+    Callback=function()
+bpm = 80
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/e9aa0137df7759492b675e22838f1ef6/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Buông đôi tay nhau ra",
+    Description="Auto",
+    Callback=function()
+bpm = 110
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/bc00ba224e2875115eafd47e525ca833/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Không phải dạng vừa đâu",
+    Description="Auto",
+    Callback=function()
+bpm = 66
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/6699ec94253ffbe177c9afe4e354817c/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="Gió",
+    Description="Auto",
+    Callback=function()
+bpm = 60
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/fa0e0ce545bdac448d6add326fae734a/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main1:AddButton({
+    Title="See Tinh ✨",
+    Description="Nhạc Hay😋✌️",
+    Callback=function()
+bpm = 113
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/5fc535d505312135f46b43c3230311c5/raw/custom_song.lua", true))()
+  end
+})
+
+-----------------------------------------
+
+Tabs.Main2:AddButton({
+    Title="Nhạc 1",
+    Description="Auto",
+    Callback=function()
+bpm = 120
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/bb06f38d6fabbc044dc11b517676e815/raw/custom_song.lua", true))()
+  end
+})
+
+Tabs.Main2:AddButton({
+    Title="Nhạc 2",
+    Description="Auto",
+    Callback=function()
+bpm = 130
+
+loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+
+loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/0e2af932f3316bfa7d77088e26b88cdd/raw/custom_song.lua", true))()
+  end
+})
+ 
