@@ -1,211 +1,110 @@
 game:GetService("StarterGui"):SetCore("SendNotification", { 
- Title = "Auto Running";
- Text = "Script cover by Ts_";
- Icon = "rbxthumb://type=Asset&id=6430826940&w=150&h=150"})
-Duration = 29;
+    Title = "Piano Vn";
+    Text = "By Ts_ với Phi";
+    Icon = "rbxthumb://type=Asset&id=6430826940&w=150&h=150"
+})
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+    Title = "Piano Auto";
+    Text = "Đang khởi động...";
+    Icon = "rbxthumb://type=Asset&id=6430826940&w=150&h=150"
+})
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+repeat task.wait() until Fluent
+
+local Window = Fluent:CreateWindow({
+    Title = "Piano Auto 🎹",
+    SubTitle = "by Ts_",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(450, 320),
+    Acrylic = false, 
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.End 
+})
+
+if Window.Frame then
+    Window.Frame.Active = false
+end
+
+local Tabs = {
+    Main = Window:AddTab({ Title = "Piano", Icon = "music" })
+}
+
 local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 
 ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Name = "PianoToggleGui"
+ScreenGui.ResetOnSpawn = false
 
 ImageButton.Parent = ScreenGui
-ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ImageButton.BorderSizePixel = 0
-ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
-ImageButton.Size = UDim2.new(0, 40, 0, 40)
-ImageButton.Draggable = true
+ImageButton.Position = UDim2.new(0.1, 0, 0.2, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Image = "http://www.roblox.com/asset/?id=831902769514"
+ImageButton.Active = true
+ImageButton.Draggable = true
 
-UICorner.CornerRadius = UDim.new(1, 10) 
+UICorner.CornerRadius = UDim.new(1, 0) 
 UICorner.Parent = ImageButton
 
-ImageButton.MouseButton1Down:Connect(function()
-    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
+ImageButton.MouseButton1Click:Connect(function()
+    Window:Minimize(not Window.Minimized)
 end)
 
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-repeat wait() until game:IsLoaded()
-local Window = Fluent:CreateWindow({
-    Title = "Piano Auto🎹",
-    SubTitle = "Beta Version [1.2.6] mini update",
-    TabWidth = 157,
-    Size = UDim2.fromOffset(450, 300),
-    Acrylic = true,
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.End
-})
-local Tabs = {
-        Main0=Window:AddTab({ Title="Thông Tin" }),
-        Main1=Window:AddTab({ Title="Piano Auto 🎹[10🎶]" }),
-        Main2=Window:AddTab({ Title="Nhạc Review phim🎹🎥[2🎶]" }),
+local function PlaySong(bpm_val, song_url)
+    bpm = bpm_val
+    _G.bpm = bpm_val
+    task.spawn(function()
+        loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
+        loadstring(game:HttpGet(song_url, true))()
+    end)
+end
+
+local songs = {
+    {"Một Vòng Việt Nam", 80, "https://gist.githack.com/talentless-custom-songs/36e0f0366b6a9c1fb938457201604c1d/raw/custom_song.lua"},
+    {"Senbonzakura", 154, "https://gist.githack.com/talentless-custom-songs/4354adb24eb94c61ea3751710e19782d/raw/custom_song.lua"},
+    {"Hoa Cỏ Lau", 150, "https://gist.githack.com/talentless-custom-songs/8b86af8d335b7c47a69be09d6d02e424/raw/custom_song.lua"},
+    {"Buông Tay Nhau Ra", 102, "https://gist.githack.com/talentless-custom-songs/d970947153b3f54a012c0c9250d72a63/raw/custom_song.lua"},
+    {"Nơi Này Có Anh", 90, "https://gist.githack.com/talentless-custom-songs/01bd21299c602916c5c0842c981d7eeb/raw/custom_song.lua"},
+    {"Phép Màu", 70, "https://gist.githack.com/talentless-custom-songs/0c1e7ffb16f3a749ee438b71da1c08bb/raw/custom_song.lua"},
+    {"Trước Khi Em Tồn Tại", 64, "https://gist.githack.com/talentless-custom-songs/57047106da268cb326773d60678199b6/raw/custom_song.lua"},
+    {"Tháng Tư Là Lời Nói Dối", 64, "https://gist.githack.com/talentless-custom-songs/2f3572ce3ca4180eb0b75e3066f104fc/raw/custom_song.lua"},
+    {"Có Hẹn Với Thanh Xuân", 105, "https://gist.githack.com/talentless-custom-songs/199993a2571c7c49f14a34805ca23950/raw/custom_song.lua"},
+    {"Thiếu Niên Hoa Hồng", 95, "https://gist.githack.com/talentless-custom-songs/cb69bab1e5a29a09834c8b9ffecbd28f/raw/custom_song.lua"},
+    {"10 Ngàn Năm", 110, "https://gist.githack.com/talentless-custom-songs/3722cdaffcc002609f724e726949ade5/raw/custom_song.lua"},
+    {"Conan Main Theme", 131, "https://gist.githack.com/talentless-custom-songs/f99ce228ea1c44368b4b1727103802ec/raw/custom_song.lua"},
+    {"Tết Đong Đầy", 95, "https://gist.githack.com/talentless-custom-songs/d59f959888a17bac2bd84a2a691c3d05/raw/custom_song.lua"},
+    {"Thiên Lý Ơi", 90, "https://gist.githack.com/talentless-custom-songs/0d79716f94d27b7f2ed7051c885e187b/raw/custom_song.lua"},
+    {"Gặp Mẹ Trong Mơ", 64, "https://cdn.statically.io/gist/talentless-custom-songs/7f915b643c3a3ce68c43013aa716c24a/raw/custom_song.lua"},
+    {"Nắng Ấm Xa Dần", 120, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/Iksskkss/refs/heads/main/Ch%C6%B0a%20c%C3%B3%20ti%C3%AAu%20%C4%91%E1%BA%BFiisksksksksmsjsjsjs.txt"},
+    {"Đáy Biển", 64, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/Phipiano/refs/heads/main/%C3%B4soksks.txt"},
+    {"Túy Âm", 75, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/Jxjsmsmjs/refs/heads/main/c%E1%BA%B7c.txt"},
+    {"Vết Mưa", 94, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/V-t-m-a1/refs/heads/main/v%E1%BA%BFt%20m%C6%B0a.txt"},
+    {"1 Đường Nở Hoa", 94, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/1-uo2ngf-n-hoa/refs/heads/main/1%20%C4%91%C6%B0%E1%BB%9Dng.txt"},
+    {"Là Anh", 61, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/L-anh-m-ng-nhi-n/refs/heads/main/l%C3%A0%20anh%20m%E1%BB%99ng%20nhi%C3%AAn.txt"},
+    {"Bóng Lá Rơi", 104, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/B-ng-l-r-i1/refs/heads/main/b%C3%B3ng%20l%C3%A1%20r%C6%A1i%20.txt"},
+    {"Haru Haru", 126, "https://gist.githack.com/talentless-custom-songs/a755fc54567c0537d98590171cca7157/raw/custom_song.lua"},
+    {"Cause I Love You", 90, "https://gist.githack.com/talentless-custom-songs/d27959e543433212c8b1a50c829e002d/raw/custom_song.lua"},
+    {"Ko Buông", 129, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/Ko-bu-ng/refs/heads/main/output%20(1).txt"},
+    {"Bên Trên Tầng Lầu", 120, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/Oakka/refs/heads/main/b%C3%AAn%20tr%C3%A2n%20tnag%20lau.txt"},
+    {"Nốt Chu Sa", 144, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/N-t-chu-sa/refs/heads/main/b%C3%AAn%20tr%C3%A2n%20tnag%20lau.txt"},
+    {"Nevada Mashup", 120, "https://rawcdn.githack.com/phiphaisieudeptrainhatthegioi-hub/Mashup/refs/heads/main/output%20(2).txt"},
+    {"Proud Of You", 120, "https://raw.githubusercontent.com/phiphaisieudeptrainhatthegioi-hub/Mxjms/refs/heads/main/ai%20h%E1%BB%8Fi.txt"},
+    {"Bầu Trời Mới", 120, "https://raw.githubusercontent.com/phiphaisieudeptrainhatthegioi-hub/B-u-tr-i/refs/heads/main/b%E1%BA%A7u%20tr%E1%BB%9Di%20m%E1%BB%9Bi.txt"},
+    {"Nhạc 1", 120, "https://gist.githack.com/talentless-custom-songs/bb06f38d6fabbc044dc11b517676e815/raw/custom_song.lua"},
+    {"Nhạc 2", 130, "https://gist.githack.com/talentless-custom-songs/0e2af932f3316bfa7d77088e26b88cdd/raw/custom_song.lua"}
 }
-    Tabs.Main0:AddButton({
-    Title = "Roblox",
-    Description = "Follow",
-    Callback = function()
-        setclipboard("https://www.roblox.com/vi/users/4457771752/profile")
-    end
-})
 
-    Tabs.Main0:AddButton({
-    Title = "Youtuber",
-    Description = "Tamm",
-    Callback = function()
-        setclipboard("https://www.youtube.com/@TamScripter")
-    end
-})
+for _, song in ipairs(songs) do
+    Tabs.Main:AddButton({
+        Title = song[1],
+        Callback = function()
+            PlaySong(song[2], song[3])
+        end
+    })
+end
 
-    Tabs.Main1:AddButton({
-    Title="Đừng làm trái tim anh đau",
-    Description="Auto",
-    Callback=function()
-	  local Settings = {
-  JoinTeam = "Pirates"; -- Pirates/Marines
-  Translator = true; -- true/false
-}
-
-
-bpm = 125
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/9901f2a773706ccee2d1bbe90ffb4861/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Tháng 4 là lời nói dối",
-    Description="Auto",
-    Callback=function()
-	  bpm = 65
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/4f22229484417182d2e664c52699b32d/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Chúng ta không thuộc về nhau",
-    Description="Auto",
-    Callback=function()
-bpm = 103
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/e6e0c4afae040ec4c020759988f8442e/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Thiên lý ơi",
-    Description="Auto",
-    Callback=function()
-bpm = 95
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/e456d85ef5a013c095e6c2e4b88b4683/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Nơi Này Có Anh",
-    Description="Auto",
-    Callback=function()
-bpm = 92
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/80f450ef29850dc83c9d33c9763eec07/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Gió Nổi Rồi",
-    Description="Auto",
-    Callback=function()
-bpm = 80
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/e9aa0137df7759492b675e22838f1ef6/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Buông đôi tay nhau ra",
-    Description="Auto",
-    Callback=function()
-bpm = 110
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/bc00ba224e2875115eafd47e525ca833/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Không phải dạng vừa đâu",
-    Description="Auto",
-    Callback=function()
-bpm = 66
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/6699ec94253ffbe177c9afe4e354817c/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="Gió",
-    Description="Auto",
-    Callback=function()
-bpm = 60
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/fa0e0ce545bdac448d6add326fae734a/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main1:AddButton({
-    Title="See Tinh ✨",
-    Description="Nhạc Hay😋✌️",
-    Callback=function()
-bpm = 113
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/5fc535d505312135f46b43c3230311c5/raw/custom_song.lua", true))()
-  end
-})
-
------------------------------------------
-
-Tabs.Main2:AddButton({
-    Title="Nhạc 1",
-    Description="Auto",
-    Callback=function()
-bpm = 120
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/bb06f38d6fabbc044dc11b517676e815/raw/custom_song.lua", true))()
-  end
-})
-
-Tabs.Main2:AddButton({
-    Title="Nhạc 2",
-    Description="Auto",
-    Callback=function()
-bpm = 130
-
-loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
-
-loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/0e2af932f3316bfa7d77088e26b88cdd/raw/custom_song.lua", true))()
-  end
-})
- 
+Window:SelectTab(1)
